@@ -213,8 +213,11 @@ class MAIN:
             clock.tick(5)
 
     def mission(self):
-        text_small("Task: Feed the snake correct information about", color_white, whole - 790, whole - 790)
-        text_small("Password Security.", color_white, whole - 790, whole - 760)
+        if len(self.snake.body) - 3 < 50:
+            text_small("Task: Feed the snake correct information about", color_white, whole - 790, whole - 790)
+            text_small("Password Security.", color_white, whole - 790, whole - 760)
+        elif len(self.snake.body) - 3 == 50:
+            text_small('Congratulations! You successfully completed the task.', color_white, whole - 790, whole - 790)
 
     def notif(self):
         if (len(self.snake.body) - 3) % 3 == 0 and (len(self.snake.body) - 3) != 0:
@@ -451,6 +454,95 @@ class MAIN:
             pygame.display.update()
             clock.tick(15)
 
+    def sc_one(self):
+        l = True
+        while l:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_f:
+                        self.game_over()
+                        l = False
+                    elif event.key == pygame.K_t:
+                        l = False
+            pop_up_box(whole - 650, whole - 600, 500, 400, '')
+            task_one_key(sc_a, whole - 655, whole - 700)
+            pygame.display.update()
+            clock.tick(15)
+
+    def sc_two(self):
+        m = True
+        while m:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_f:
+                        m = False
+                    elif event.key == pygame.K_t:
+                        m = False
+                        self.game_over()
+            pop_up_box(whole - 650, whole - 600, 500, 400, '')
+            task_one_key(sc_b, whole - 655, whole - 700)
+            pygame.display.update()
+            clock.tick(15)
+
+    def sc_three(self):
+        n = True
+        while n:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_f:
+                        n = False
+                    elif event.key == pygame.K_t:
+                        n = False
+                        self.game_over()
+            pop_up_box(whole - 650, whole - 600, 500, 400, '')
+            task_one_key(re_sc_c, whole - 650, whole - 680)
+            pygame.display.update()
+            clock.tick(15)
+
+    def sc_four(self):
+        o = True
+        while o:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_f:
+                        self.game_over()
+                        o = False
+                    elif event.key == pygame.K_t:
+                        o = False
+            pop_up_box(whole - 650, whole - 600, 500, 400, '')
+            task_one_key(sc_d, whole - 650, whole - 750)
+            pygame.display.update()
+            clock.tick(15)
+
+    def sc_five(self):
+        p = True
+        while p:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_f:
+                        p = False
+                    elif event.key == pygame.K_t:
+                        p = False
+                        self.game_over()
+            pop_up_box(whole - 650, whole - 600, 500, 400, '')
+            task_one_key(sc_e, whole - 650, whole - 720)
+            pygame.display.update()
+            clock.tick(15)
 
 pygame.mixer.pre_init(44100, -16, 2, 512)
 pygame.init()
@@ -497,7 +589,16 @@ tf_c = pygame.image.load('Graphics/tf_c.png').convert_alpha()
 tf_d = pygame.image.load('Graphics/tf_d.png').convert_alpha()
 tf_e = pygame.image.load('Graphics/tf_e.png').convert_alpha()
 
+sc_a = pygame.image.load('Graphics/sc_a.png').convert_alpha()
+sc_b = pygame.image.load('Graphics/sc_b.png').convert_alpha()
+sc_c = pygame.image.load('Graphics/sc_c.png').convert_alpha()
+re_sc_c = pygame.transform.scale(sc_c, (480, 580))
+sc_d = pygame.image.load('Graphics/sc_d.png').convert_alpha()
+sc_e = pygame.image.load('Graphics/sc_e.png').convert_alpha()
+
 pygame.display.set_caption('Feed The Snake')
+icon = pygame.image.load('Graphics/snake_icon.png')
+pygame.display.set_icon(icon)
 
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
@@ -615,20 +716,30 @@ def game_loop():
                     main_game.pass_five()
                 elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 18:
                     main_game.pass_six()
-                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 22:
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 21:
                     main_game.tf_one()
-                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 26:
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 24:
                     main_game.tf_two()
-                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 30:
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 27:
                     main_game.tf_three()
-                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 34:
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 30:
                     main_game.tf_four()
-                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 38:
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 33:
                     main_game.tf_five()
-                #elif event.key == pygame.K_SPACE:
-
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 36:
+                    main_game.sc_one()
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 39:
+                    main_game.sc_two()
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body) - 3 == 42:
+                    main_game.sc_three()
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body) - 3 == 45:
+                    main_game.sc_four()
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body) - 3 == 48:
+                    main_game.sc_five()
                 elif event.key == pygame.K_p:
                     main_game.pause()
+                #elif event.key == pygame.K_SPACE:
+
 
         screen.fill((116, 201, 107))
         main_game.draw_elements()
