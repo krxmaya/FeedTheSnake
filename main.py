@@ -606,6 +606,13 @@ pygame.display.set_icon(icon)
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 
+# main menu
+main_a = pygame.image.load('Graphics/main_a.png').convert_alpha()
+main_b = pygame.image.load('Graphics/main_b.png').convert_alpha()
+re_main_b = re_logo = pygame.transform.scale(main_b, (500, 300))
+logo = pygame.image.load('Graphics/snake_docu.png').convert_alpha()
+re_logo = pygame.transform.scale(logo, (150, 150))
+
 
 def text_small(msg, color, x, y):
     screen_text = small_font.render(msg, True, color)
@@ -667,12 +674,9 @@ def game_intro():
                     quit()
 
         screen.fill(color_dark_green)
-        text_large("Feed the Snake", color_white, whole - 600, whole - 700)
-        text_medium("1. Use arrow keys to control the snake.", color_white, whole - 750, whole - 550)
-        text_medium("2. Feed red apples to the snake.", color_white, whole - 750, whole - 450)
-        text_medium("3. If answer in question is wrong, the ", color_white, whole - 750, whole - 350)
-        text_medium("   game restarts. ", color_white, whole - 750, whole - 310)
-        text_medium("4. Reach 50 points to win game.", color_white, whole - 750, whole - 250)
+        task_one_key(re_logo, whole - 480, whole - 700)
+        task_one_key(main_a, whole - 650, whole - 620)
+        task_one_key(re_main_b, whole - 650, whole - 470)
         text_small("Press SPACE to start", color_white, whole - 550, whole - 80)
         text_small("Press H for info about password security", color_white, whole - 650, whole - 50)
 
