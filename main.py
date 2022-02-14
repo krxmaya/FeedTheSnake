@@ -596,10 +596,13 @@ re_sc_c = pygame.transform.scale(sc_c, (480, 580))
 sc_d = pygame.image.load('Graphics/sc_d.png').convert_alpha()
 sc_e = pygame.image.load('Graphics/sc_e.png').convert_alpha()
 
+# help
+help_a = pygame.image.load('Graphics/help_a.png').convert_alpha()
+help_b = pygame.image.load('Graphics/help_b.png').convert_alpha()
+
 pygame.display.set_caption('Feed The Snake')
 icon = pygame.image.load('Graphics/snake_icon.png')
 pygame.display.set_icon(icon)
-
 SCREEN_UPDATE = pygame.USEREVENT
 pygame.time.set_timer(SCREEN_UPDATE, 150)
 
@@ -608,11 +611,9 @@ def text_small(msg, color, x, y):
     screen_text = small_font.render(msg, True, color)
     screen.blit(screen_text, (x, y))
 
-
 def text_medium(msg, color, x, y):
     screen_text = medium_font.render(msg, True, color)
     screen.blit(screen_text, (x, y))
-
 
 def text_large(msg, color, x, y):
     screen_text = large_font.render(msg, True, color)
@@ -627,11 +628,14 @@ def pop_up_box(x_pos, y_pos, w, h, text):
     text_rect = popup_text.get_rect(center=(whole - 450, whole - 550))
     screen.blit(popup_text, text_rect)
 
+def task_one_key(image, x, y):
+    pass_rect = pygame.Rect(x, y, 400, 200)
+    screen.blit(image, pass_rect)
+
 
 def button_one(x, y):
     btn_one_rect = pygame.Rect(x, y, 400, 200)
     screen.blit(button_throw, btn_one_rect)
-
 
 def button_two(x, y):
     btn_one_rect = pygame.Rect(x, y, 400, 200)
@@ -646,11 +650,6 @@ def button_four(x, y):
     screen.blit(button_false, btn_one_rect)
 
 
-def task_one_key(image, x, y):
-    pass_rect = pygame.Rect(x, y, 400, 200)
-    screen.blit(image, pass_rect)
-
-
 def game_intro():
     intro = True
     while intro:
@@ -661,6 +660,8 @@ def game_intro():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     intro = False
+                if event.key == pygame.K_h:
+                    help_one()
                 if event.key == pygame.K_q:
                     pygame.quit()
                     quit()
@@ -677,6 +678,43 @@ def game_intro():
 
         pygame.display.update()
         clock.tick(15)
+
+def help_one():
+    h_a = True
+    while h_a:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    help_two()
+                if event.key == pygame.K_BACKSPACE:
+                    h_a = False
+        screen.fill(color_dark_green)
+        task_one_key(help_a, whole - 800, whole - 800)
+        pygame.display.update()
+        clock.tick(15)
+
+def help_two():
+    h_o = True
+    while h_o:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_BACKSPACE:
+                    h_o = False
+                if event.key == pygame.K_q:
+                    pygame.quit()
+                    quit()
+
+        screen.fill(color_dark_green)
+        task_one_key(help_b, whole - 800, whole - 800)
+        pygame.display.update()
+        clock.tick(15)
+
 
 main_game = MAIN()
 
