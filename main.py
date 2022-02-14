@@ -218,7 +218,7 @@ class MAIN:
 
     def notif(self):
         if (len(self.snake.body) - 3) % 3 == 0 and (len(self.snake.body) - 3) != 0:
-            text_small('Press SPACE to complete task.', color_white, whole - 600, whole - 90)
+            text_medium('Press SPACE to complete task.', (220, 20, 60), whole - 700, whole - 90)
 
     def pass_one(self):
         a = True
@@ -615,15 +615,15 @@ def game_loop():
                     main_game.pass_five()
                 elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 18:
                     main_game.pass_six()
-                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 21:
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 22:
                     main_game.tf_one()
-                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 24:
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 26:
                     main_game.tf_two()
-                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 27:
-                    main_game.tf_three()
                 elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 30:
+                    main_game.tf_three()
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 34:
                     main_game.tf_four()
-                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 33:
+                elif event.key == pygame.K_SPACE and len(main_game.snake.body)-3 == 38:
                     main_game.tf_five()
                 #elif event.key == pygame.K_SPACE:
 
